@@ -1,0 +1,157 @@
+db.products.insertMany([
+  {
+    "category": "kids",
+    "subcategory": "boys",
+    "name": "Boys T-shirt",
+    "description": "Comfortable cotton T-shirt for boys.",
+    "price": 12.99,
+    "stock": 100,
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "boys",
+    "name": "Boys Jeans",
+    "description": "Stylish denim jeans for boys.",
+    "price": 24.99,
+    "stock": 50,
+    "images": ["image4.jpg", "image5.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "boys",
+    "name": "Boys Sneakers",
+    "description": "Durable and comfortable sneakers for boys.",
+    "price": 29.99,
+    "stock": 75,
+    "images": ["image6.jpg", "image7.jpg", "image8.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "boys",
+    "name": "Boys Hoodie",
+    "description": "Warm and cozy hoodie for boys.",
+    "price": 19.99,
+    "stock": 40,
+    "images": ["image9.jpg", "image10.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "boys",
+    "name": "Boys Shorts",
+    "description": "Lightweight shorts for boys.",
+    "price": 14.99,
+    "stock": 80,
+    "images": ["image11.jpg", "image12.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "girls",
+    "name": "Girls Dress",
+    "description": "Beautiful floral dress for girls.",
+    "price": 22.99,
+    "stock": 60,
+    "images": ["image13.jpg", "image14.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "girls",
+    "name": "Girls Leggings",
+    "description": "Comfortable and stretchy leggings for girls.",
+    "price": 16.99,
+    "stock": 90,
+    "images": ["image15.jpg", "image16.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "girls",
+    "name": "Girls Sandals",
+    "description": "Cute and comfortable sandals for girls.",
+    "price": 18.99,
+    "stock": 70,
+    "images": ["image17.jpg", "image18.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "girls",
+    "name": "Girls Jacket",
+    "description": "Stylish jacket for girls.",
+    "price": 34.99,
+    "stock": 30,
+    "images": ["image19.jpg", "image20.jpg"]
+  },
+  {
+    "category": "kids",
+    "subcategory": "girls",
+    "name": "Girls Skirt",
+    "description": "Colorful skirt for girls.",
+    "price": 14.99,
+    "stock": 85,
+    "images": ["image21.jpg", "image22.jpg"]
+  },
+  {
+    "category": "women",
+    "subcategory": "eastern",
+    "name": "Embroidered Kurti",
+    "description": "Beautifully embroidered kurti made with high-quality fabric, perfect for traditional occasions.",
+    "price": 45.99,
+    "quantity": 15,
+    "images": [
+      "embroidered_kurti_front.jpg",
+      "embroidered_kurti_back.jpg",
+      "embroidered_kurti_detail.jpg"
+    ]
+  },
+  {
+    "category": "women",
+    "subcategory": "eastern",
+    "name": "Silk Saree",
+    "description": "Elegant silk saree with intricate designs and a smooth finish, ideal for festive wear.",
+    "price": 120.00,
+    "quantity": 10,
+    "images": [
+      "silk_saree_full.jpg",
+      "silk_saree_pallu.jpg",
+      "silk_saree_detail.jpg"
+    ]
+  },
+  {
+    "category": "women",
+    "subcategory": "eastern",
+    "name": "Chiffon Anarkali",
+    "description": "Graceful chiffon Anarkali suit featuring delicate embroidery and a flowing silhouette.",
+    "price": 80.50,
+    "quantity": 8,
+    "images": [
+      "chiffon_anarkali_full.jpg",
+      "chiffon_anarkali_sleeve.jpg",
+      "chiffon_anarkali_detail.jpg"
+    ]
+  },
+  {
+    "category": "women",
+    "subcategory": "eastern",
+    "name": "Printed Lawn Suit",
+    "description": "Vibrant printed lawn suit with matching dupatta, perfect for casual and semi-formal wear.",
+    "price": 35.00,
+    "quantity": 20,
+    "images": [
+      "printed_lawn_suit_full.jpg",
+      "printed_lawn_suit_dupatta.jpg",
+      "printed_lawn_suit_detail.jpg"
+    ]
+  },
+  {
+    "category": "women",
+    "subcategory": "eastern",
+    "name": "Georgette Lehenga Choli",
+    "description": "Stunning georgette lehenga choli with intricate embellishments and a modern touch.",
+    "price": 150.75,
+    "quantity": 5,
+    "images": [
+      "georgette_lehenga_full.jpg",
+      "georgette_lehenga_choli.jpg",
+      "georgette_lehenga_detail.jpg"
+    ]
+  }
+]);
