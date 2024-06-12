@@ -127,12 +127,13 @@ const Cart = () => {
 
     console.log(checkoutData);
     if (Object.keys(formData).length !== 0) {
-      
-      axios.post(url+"/order/add-order",checkoutData).then(res=>console.log(res)).catch(res=>console.log(res))
+      axios
+        .post(url + "/order/add-order", checkoutData)
+        .then((res) => console.log(res))
+        .catch((res) => console.log(res));
       console.log(typeof Object.keys(formData));
       // axios.post(url + "/order/add-order", checkoutData);
     }
-
   };
 
   const handleFormSubmit = (values) => {
@@ -161,7 +162,7 @@ const Cart = () => {
                     <Products
                       key={item._id}
                       _id={item._id}
-                      img={item.images[0]}
+                      img={item.image[0]}
                       name={item.name}
                       price={item.price}
                       quantity={item.quantity}

@@ -18,14 +18,15 @@ const Eastern = () => {
   }, []);
   const prodcuts = data?.map((pro) => (
     <NavLink key={pro._id} to={"./" + pro?._id}>
-      <ProductCard key={pro.id} title={pro.name} price={pro.price} />
+      <ProductCard
+        key={pro.id}
+        title={pro.name}
+        price={pro.price}
+        img={pro?.image[0]}
+      />
     </NavLink>
   ));
-  return (
-    <ProductLayout>
-      {prodcuts}
-    </ProductLayout>
-  );
+  return <ProductLayout>{prodcuts}</ProductLayout>;
 };
 
 export default Eastern;

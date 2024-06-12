@@ -1,4 +1,5 @@
 const ProductCard = ({ img, title, price }) => {
+  console.log(img);
   return (
     <>
       <div className="group relative">

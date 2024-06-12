@@ -77,7 +77,7 @@
 //       });        values.subsubcategory &&
 //         formData.append("subsubcategory", values.subsubcategory);
 //       console.log(values);
-//       const response = await axios.post('http://localhost:8000/api/v1/product/add-product', formData, {
+//       const response = await axios.post(ur'product/add-product', formData, {
 //         headers: {
 //           'Content-Type': 'multipart/form-data',
 //         },
@@ -350,6 +350,7 @@ import * as Yup from "yup";
 import { Select, SelectItem, Button } from "@nextui-org/react";
 import { useState } from "react";
 import axios from "axios";
+import { url } from "../../url";
 
 const categories = [
   { key: "kids", label: "Kids" },
@@ -449,10 +450,7 @@ const AddProducts = () => {
       values.subsubcategory &&
         formData.append("subsubcategory", values.subsubcategory);
       console.log(values);
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/product/add-product",
-        formData
-      );
+      const response = await axios.post(url + "/product/add-product", formData);
       console.log(response);
     } catch (error) {
       console.log(error);

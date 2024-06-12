@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 const ImageCarousel = ({ img }) => {
+  console.log(img);
   const [index, setIndex] = useState(0);
-  const length = img.length;
+  const length = img?.length;
 
   const handlePrevious = () => {
     const newIndex = index - 1;
@@ -17,7 +18,7 @@ const ImageCarousel = ({ img }) => {
   return (
     <div>
       <div className="carousel w-full h-72">
-        {img.map((image, i) => (
+        {img?.map((image, i) => (
           <div
             id={`slide${i + 1}`}
             className={`carousel-item relative w-full ${
@@ -30,8 +31,19 @@ const ImageCarousel = ({ img }) => {
         ))}
       </div>
       <div className="flex justify-between relative text-3xl  ">
-        <button className="absolute bottom-40 right-0 text-black" onClick={handlePrevious}>{">"}</button>
-        <button className="absolute bottom-40 left-0 text-black" onClick={handleNext}> {"<"} </button>
+        <button
+          className="absolute bottom-40 right-0 text-black"
+          onClick={handlePrevious}
+        >
+          {">"}
+        </button>
+        <button
+          className="absolute bottom-40 left-0 text-black"
+          onClick={handleNext}
+        >
+          {" "}
+          {"<"}{" "}
+        </button>
       </div>
     </div>
   );
