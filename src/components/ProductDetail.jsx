@@ -37,55 +37,57 @@ const ProductDetail = () => {
 
   console.log(item);
   return (
-    <div className="min-h-screen">
-      <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
-        <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
-            <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
+    <div className="min-h-screen bg-gradient-to-r from-gray-100 via-white to-gray-200 dark:from-gray-800 dark:via-gray-900 dark:to-black">
+      <section className="py-12 md:py-20">
+        <div className="max-w-screen-xl px-4 mx-auto lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-20">
+            <div className="lg:col-span-1">
               <ImageCarousel img={item?.image} />
             </div>
-            <div className="mt-6 sm:mt-8 lg:mt-0">
-              <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+            <div className="mt-8 lg:mt-0 lg:col-span-1">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 {item?.name}
               </h1>
-
-              <div className="mt-4 sm:items-center sm:gap-4 sm:flex">
-                <div className="flex items-center gap-2 mt-4 sm:mt-0">
-                  <div className="flex items-center gap-1">
-                    <p className="text-black">Category : {item?.category}</p>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <p className="text-black ml-4">
-                      Sub-Category : {item?.subcategory}
-                    </p>
-                  </div>
-                </div>
+              <div className=" flex-row sm:flex-row sm:items-center sm:gap-4 mt-4">
+                <p className="text-lg p-4 border-2 mb-4 border-purple-900 text-center text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">Category:</span>{" "}
+                  {item?.category}
+                </p>
+                <p className=" text-lg p-4 border-2 mb-4 border-purple-900 text-center text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold">Sub-Category:</span>{" "}
+                  {item?.subcategory}
+                </p>
               </div>
-              <p className="my-4">Stock: {item?.stock}</p>
-
-              <p className="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white">
-                {item?.price} Rs/
-              </p>
-              <p className="my-6 text-gray-500 dark:text-gray-400">
+              <div className=" flex-col sm:flex-row sm:items-center sm:gap-4 mt-4">
+                <p className="text-lg mb-4 font-medium text-gray-900 dark:text-gray-300">
+                  <span className="font-semibold">Stock:</span> {item?.stock}
+                </p>
+                <hr />
+                <p className="mt-2 sm:mt-0 sm:ml-4 text-lg font-medium text-gray-900 dark:text-gray-300">
+                  <span className="font-semibold">Price:</span> {item?.price}{" "}
+                  Rs/
+                </p>
+              </div>
+              <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
                 {item?.description}
               </p>
-              <div className="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
+              <div className="mt-8 sm:mt-10 flex justify-start">
                 <Button
-                  onClick={item?.stock > 2 && addToCart}
-                  title=""
-                  className="text-white mt-4 sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
+                  onClick={item?.stock > 2 ? addToCart : null}
+                  className={`  bg-white focus:ring-blue-300 text-purple border-1 border-purple-900 px-6 py-3 rounded-lg text-lg font-medium ${
+                    item?.stock > 2 ? "" : "bg-gray-500 cursor-not-allowed"
+                  }`}
+                  disabled={item?.stock <= 2}
                 >
                   <svg
-                    className="w-5 h-5 -ms-2 me-2"
+                    className="w-6 h-6 mr-2"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
                     fill="none"
                     viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
                     <path
-                      stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
@@ -95,7 +97,7 @@ const ProductDetail = () => {
                   {item?.stock > 2 ? "Add to cart" : "Out of Stock"}
                 </Button>
               </div>
-              <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
+              <hr className="my-8 border-gray-300 dark:border-gray-700" />
             </div>
           </div>
         </div>
