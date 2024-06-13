@@ -1,35 +1,46 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const SignupForm = ({ onSubmit }) => {
+  const [api, contextHolder] = notification.useNotification();
+  const navigate = useNavigate();
+
+  const openNotification = (msg) => {
+    api.info({
+      message: `SUCCESS`,
+      description: msg,
+      placement: "top",
+    });
+  };
   return (
     <Formik
       initialValues={{
-        fullName: '',
-        address: '',
-        city: '',
-        zipcode: '',
-        phoneNumber: '',
-        whatsappNumber: '',
+        fullName: "",
+        address: "",
+        city: "",
+        zipcode: "",
+        phoneNumber: "",
+        whatsappNumber: "",
       }}
       validationSchema={Yup.object({
-        fullName: Yup.string().required('Required'),
-        address: Yup.string().required('Required'),
-        city: Yup.string().required('Required'),
-        zipcode: Yup.string().required('Required'),
-        phoneNumber: Yup.string().required('Required'),
-        whatsappNumber: Yup.string().required('Required'),
+        fullName: Yup.string().required("Required"),
+        address: Yup.string().required("Required"),
+        city: Yup.string().required("Required"),
+        zipcode: Yup.string().required("Required"),
+        phoneNumber: Yup.string().required("Required"),
+        whatsappNumber: Yup.string().required("Required"),
       })}
-      onSubmit={(values,{reset})=>{
+      onSubmit={(values, { reset }) => {
         console.log(values);
         onSubmit(values);
-        reset()
-
+        openNotification("detail added succesfully");
+        reset();
       }}
     >
       {({ errors, touched }) => (
         <Form className="max-w-md mx-auto p-4 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Sign up</h2>
+          {contextHolder}
+          <h2 className="text-2xl font-bold mb-4">Delivery Details </h2>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label
@@ -46,7 +57,11 @@ const SignupForm = ({ onSubmit }) => {
                 placeholder="John Doe"
               />
               {errors.fullName && touched.fullName ? (
-                <ErrorMessage name="fullName" component="div" className="text-red-500 text-xs" />
+                <ErrorMessage
+                  name="fullName"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -64,7 +79,11 @@ const SignupForm = ({ onSubmit }) => {
                 placeholder="123 Main St"
               />
               {errors.address && touched.address ? (
-                <ErrorMessage name="address" component="div" className="text-red-500 text-xs" />
+                <ErrorMessage
+                  name="address"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
           </div>
@@ -84,7 +103,11 @@ const SignupForm = ({ onSubmit }) => {
                 placeholder="New York"
               />
               {errors.city && touched.city ? (
-                <ErrorMessage name="city" component="div" className="text-red-500 text-xs" />
+                <ErrorMessage
+                  name="city"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -102,7 +125,11 @@ const SignupForm = ({ onSubmit }) => {
                 placeholder="10001"
               />
               {errors.zipcode && touched.zipcode ? (
-                <ErrorMessage name="zipcode" component="div" className="text-red-500 text-xs" />
+                <ErrorMessage
+                  name="zipcode"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
           </div>
@@ -121,8 +148,12 @@ const SignupForm = ({ onSubmit }) => {
                 type="tel"
                 placeholder="+1 555 1234"
               />
-              {errors.phoneNumber && touched.phoneNumber? (
-                <ErrorMessage name="phoneNumber" component="div" className="text-red-500 text-xs" />
+              {errors.phoneNumber && touched.phoneNumber ? (
+                <ErrorMessage
+                  name="phoneNumber"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -139,13 +170,17 @@ const SignupForm = ({ onSubmit }) => {
                 type="tel"
                 placeholder="+1 555 1234"
               />
-              {errors.whatsappNumber && touched.whatsappNumber? (
-                <ErrorMessage name="whatsappNumber" component="div" className="text-red-500 text-xs" />
+              {errors.whatsappNumber && touched.whatsappNumber ? (
+                <ErrorMessage
+                  name="whatsappNumber"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
               ) : null}
             </div>
           </div>
           <button
-            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-white border-1 border-purple-900 hover:bg-purple-700 text-purple font-bold py-2 px-4 rounded"
             type="submit"
           >
             Submit

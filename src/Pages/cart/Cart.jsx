@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SignupForm from "./CartForm";
-import { Button } from "antd";
+import { Button, notification } from "antd";
 import axios from "axios";
 import { url } from "../../url";
+import { useNavigate } from "react-router-dom";
 
 const Products = ({
   _id,
@@ -75,7 +76,16 @@ const Products = ({
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [formData, setFormData] = useState({}); // State to hold form data
+  const [api, contextHolder] = notification.useNotification();
+  const navigate = useNavigate();
 
+  const openNotification = (msg) => {
+    api.info({
+      message: `SUCCESS`,
+      description: msg,
+      placement: "top",
+    });
+  };
   useEffect(() => {
     const storedItems = JSON.parse(localStorage.getItem("items")) || [];
     setItems(storedItems);
@@ -132,7 +142,11 @@ const Cart = () => {
         .then((res) => console.log(res))
         .catch((res) => console.log(res));
       console.log(typeof Object.keys(formData));
-      // axios.post(url + "/order/add-order", checkoutData);
+      localStorage.setItem("items", JSON.stringify([]));
+      navigate("/");
+      openNotification("check out successfull");
+    } else {
+      openNotification("Please fill delivery details before checkout");
     }
   };
 
@@ -143,6 +157,7 @@ const Cart = () => {
   return (
     <div>
       <section className="min-h-screen">
+        {contextHolder}
         {items.length === 0 ? (
           <h1 className="flex justify-center mt-20 text-black text-2xl">
             No items

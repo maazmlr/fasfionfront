@@ -18,6 +18,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { GrMenu } from "react-icons/gr";
 
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const navigation = {
   categories: [
@@ -212,7 +213,7 @@ export default function Example() {
                 {/* Links */}
                 <TabGroup className="mt-2">
                   <div className="border-b border-gray-200">
-                    <TabList className="-mb-px flex space-x-8 mt-5 px-4">
+                    <TabList className="-mb-px flex  space-x-8 mt-5 px-4">
                       {navigation.categories.map((category) => (
                         <Tab
                           key={category.name}
@@ -282,7 +283,7 @@ export default function Example() {
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
           <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
+            <div className="flex  h-16 items-center">
               <button
                 type="button"
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -294,15 +295,11 @@ export default function Example() {
               </button>
 
               {/* Logo */}
-              <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+              <div className="flex flex-1  lg:flex-none justify-center lg:justify-start">
+                <NavLink to={"/"}>
                   <span className="sr-only">Your Company</span>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
-                </a>
+                  <img className="h-16 w-auto " src={logo} alt="Company Logo" />
+                </NavLink>
               </div>
 
               {/* Flyout menus */}
