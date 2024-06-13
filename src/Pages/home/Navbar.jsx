@@ -261,8 +261,8 @@ export default function Example() {
                                   className="object-cover object-center"
                                 />
                               </div>
-                              <a
-                                href={item.href}
+                              <NavLink
+                                to={item.href}
                                 className="mt-6 block font-medium text-gray-900"
                               >
                                 <span
@@ -270,7 +270,7 @@ export default function Example() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </NavLink>
                               <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p>
