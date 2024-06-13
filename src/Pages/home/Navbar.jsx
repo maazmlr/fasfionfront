@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from "react";
 import {
   Dialog,
@@ -183,11 +169,13 @@ function classNames(...classes) {
 export default function Example() {
   const [open, setOpen] = useState(false);
 
+  const closeMenu = () => setOpen(false);
+
   return (
     <div className="bg-white">
       {/* Mobile menu */}
       <Transition show={open}>
-        <Dialog className="relative  lg:hidden" onClose={setOpen}>
+        <Dialog className="relative z-40 lg:hidden" onClose={setOpen}>
           <TransitionChild
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -224,7 +212,7 @@ export default function Example() {
                 {/* Links */}
                 <TabGroup className="mt-2">
                   <div className="border-b border-gray-200">
-                    <TabList className="-mb-px flex space-x-8 px-4">
+                    <TabList className="-mb-px flex space-x-8 mt-5 px-4">
                       {navigation.categories.map((category) => (
                         <Tab
                           key={category.name}
@@ -254,7 +242,7 @@ export default function Example() {
                               key={item.name}
                               className="group relative text-sm mb-4"
                             >
-                              <div className="aspect-h-1  aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                 <img
                                   src={item.imageSrc}
                                   alt={item.imageAlt}
@@ -264,6 +252,7 @@ export default function Example() {
                               <NavLink
                                 to={item.href}
                                 className="mt-6 block font-medium text-gray-900"
+                                onClick={closeMenu}
                               >
                                 <span
                                   className="absolute inset-0 z-10"
@@ -287,7 +276,7 @@ export default function Example() {
         </Dialog>
       </Transition>
 
-      <header className="relative bg-white">
+      <header className="relative bg-white z-50">
         <nav
           aria-label="Top"
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -329,7 +318,7 @@ export default function Example() {
                                 open
                                   ? "border-indigo-600 text-indigo-600"
                                   : "border-transparent text-gray-700 hover:text-gray-800",
-                                "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out"
+                                "relative z-20 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out"
                               )}
                             >
                               {category.name}
@@ -344,7 +333,7 @@ export default function Example() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                            <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500 z-30">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
@@ -353,14 +342,14 @@ export default function Example() {
 
                               <div className="relative bg-white">
                                 <div className="mx-auto max-w-7xl px-8">
-                                  <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                    <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                  <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16 right-12">
+                                    <div className="col-start-12 grid grid-cols-4  gap-x-8">
                                       {category.featured.map((item) => (
                                         <div
                                           key={item.name}
                                           className="group relative text-base sm:text-sm"
                                         >
-                                          <div className="aspect-h-1  aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                             <img
                                               src={item.imageSrc}
                                               alt={item.imageAlt}

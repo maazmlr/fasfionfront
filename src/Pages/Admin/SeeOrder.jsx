@@ -27,7 +27,7 @@ const OrderList = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen">
       <h1 className="text-2xl font-bold mb-6">Order List</h1>
       {orders.length === 0 ? (
         <div className="text-lg text-gray-700">No orders found</div>

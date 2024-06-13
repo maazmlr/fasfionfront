@@ -351,6 +351,7 @@ import { Select, SelectItem, Button } from "@nextui-org/react";
 import { useState } from "react";
 import axios from "axios";
 import { url } from "../../url";
+import { notification } from "antd";
 
 const categories = [
   { key: "kids", label: "Kids" },
@@ -433,7 +434,15 @@ const validationSchema = Yup.object({
 const AddProducts = () => {
   const [item, setItem] = useState("");
   const [subItem, setSubItem] = useState("");
+  const [api, contextHolder] = notification.useNotification();
 
+  const openNotification = (placement) => {
+    api.info({
+      message: `SUCCESS`,
+      description: "product added successfully",
+      placement,
+    });
+  };
   const handleSubmit = async (values) => {
     try {
       const formData = new FormData();
@@ -452,6 +461,7 @@ const AddProducts = () => {
       console.log(values);
       const response = await axios.post(url + "/product/add-product", formData);
       console.log(response);
+      openNotification("topRight");
     } catch (error) {
       console.log(error);
     }
@@ -472,6 +482,7 @@ const AddProducts = () => {
   return (
     <div className="min-h-screen p-6 bg-gray-100 flex justify-center items-center">
       <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-8">
+        {contextHolder}
         <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
           Add Product
         </h2>
