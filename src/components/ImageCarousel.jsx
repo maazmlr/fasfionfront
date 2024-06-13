@@ -5,12 +5,12 @@ const ImageCarousel = ({ img }) => {
 
   const goToPrevious = () => {
     const isFirstImage = currentIndex === 0;
-    const newIndex = isFirstImage ? img.length - 1 : currentIndex - 1;
+    const newIndex = isFirstImage ? img?.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const goToNext = () => {
-    const isLastImage = currentIndex === img.length - 1;
+    const isLastImage = currentIndex === img?.length - 1;
     const newIndex = isLastImage ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -24,7 +24,7 @@ const ImageCarousel = ({ img }) => {
         &#8592;
       </button>
       <img
-        src={img[currentIndex]}
+        src={img && img[currentIndex]}
         alt={`carousel-${currentIndex}`}
         className="w-full h-full object-cover"
       />

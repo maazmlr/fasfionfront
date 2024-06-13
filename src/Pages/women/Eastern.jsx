@@ -16,6 +16,7 @@ const Eastern = () => {
       )
       .then((res) => setData(res.data.data));
   }, []);
+  console.log(data);
   const prodcuts = data?.map((pro) => (
     <NavLink key={pro._id} to={"./" + pro?._id}>
       <ProductCard
