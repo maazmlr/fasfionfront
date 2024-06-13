@@ -17,7 +17,6 @@ const Western = () => {
       )
       .then((res) => setData(res.data.data));
   }, []);
-  console.log(data[0].image[0]);
   const prodcuts = data?.map((pro) => (
     <NavLink key={pro._id} to={"./" + pro?._id}>
       <ProductCard
