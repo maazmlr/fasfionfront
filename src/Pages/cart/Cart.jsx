@@ -142,7 +142,7 @@ const Cart = () => {
         .then((res) => console.log(res))
         .catch((res) => console.log(res));
       console.log(typeof Object.keys(formData));
-      localStorage.setItem("items", JSON.stringify([]));
+      localStorage.removeItem("items");
       navigate("/");
       openNotification("check out successfull");
     } else {
@@ -198,8 +198,7 @@ const Cart = () => {
 
                     <div className="flex justify-end">
                       <Button
-                        href="#"
-                        className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                        className="block rounded bg-white  px-6  border-1 border-purple-900 text-sm text-gray-100 transition hover:bg-gray-600"
                         onClick={handleCheckout}
                       >
                         Checkout
