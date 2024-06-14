@@ -402,6 +402,8 @@ const jewSubcategories = {
 };
 
 const validationSchema = Yup.object({
+  size: Yup.string().required("At least one color is required"),
+  color: Yup.string().required("At least one color is required"),
   category: Yup.string().required("Category is required"),
   subcategory: Yup.string().required("Subcategory is required"),
   name: Yup.string().required("Product name is required"),
@@ -444,6 +446,7 @@ const AddProducts = () => {
     });
   };
   const handleSubmit = async (values) => {
+    console.log();
     try {
       const formData = new FormData();
       formData.append("category", values.category);
@@ -453,6 +456,8 @@ const AddProducts = () => {
       formData.append("price", values.price);
       formData.append("discount", values.discount);
       formData.append("stock", values.stock);
+      formData.append("size", values.size.split(","));
+      formData.append("color", values.color.split(","));
       values.image.forEach((file) => {
         formData.append("image", file);
       });
@@ -477,6 +482,8 @@ const AddProducts = () => {
     stock: 0,
     discount: 0,
     image: [],
+    color: "",
+    size: "",
   };
 
   return (
@@ -726,6 +733,60 @@ const AddProducts = () => {
                 )}
               </div>
 
+              <div className="mb-4">
+                <Field name="color">
+                  {({ field }) => (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Color
+                      </label>
+                      <input
+                        {...field}
+                        type="text"
+                        value={field.value}
+                        onChange={(e) => setFieldValue("color", e.target.value)}
+                        className="mt-1 p-2 w-full border rounded-md bg-gray-50"
+                      />
+                    </div>
+                  )}
+                </Field>
+                {errors.color && touched.color && (
+                  <div className="text-red-600">{errors.color}</div>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <Field name="size">
+                  {({ field }) => (
+                    <Select
+                      label="size"
+                      placeholder="Select size"
+                      selectionMode="multiple"
+                      className="w-full bg-gray-50"
+                      {...field}
+                    >
+                      <SelectItem key="xs" value="xs">
+                        XS
+                      </SelectItem>
+                      <SelectItem key="s" value="sm">
+                        SM
+                      </SelectItem>
+                      <SelectItem key="m" value="md">
+                        MD
+                      </SelectItem>
+                      <SelectItem key="l" value="lg">
+                        LG
+                      </SelectItem>
+                      <SelectItem key="xl" value="xl">
+                        XL
+                      </SelectItem>
+                    </Select>
+                  )}
+                </Field>
+                {errors.size && touched.size && (
+                  <div className="text-red-600">{errors.size}</div>
+                )}
+              </div>
               <Button type="submit" className="w-full bg-blue-600 text-white">
                 Add Product
               </Button>
