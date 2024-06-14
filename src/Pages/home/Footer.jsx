@@ -1,4 +1,8 @@
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { CiFacebook } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <div>
@@ -8,8 +12,18 @@ const Footer = () => {
             <div className="flex justify-center text-teal-600 sm:justify-start">
               <img src={logo} alt="" className="h-24 w-54" />
             </div>
-            <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
-              Copyright © 2022. All rights reserved.
+            <p>Phone: 92 332 8822724</p>
+            <p className="mt-4 flex justify-between  text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
+              <NavLink
+                to={
+                  "https://www.facebook.com/profile.php?id=61561108675867&mibextid=LQQJ4d"
+                }
+              >
+                <CiFacebook size={30} />
+              </NavLink>
+              <NavLink to={"https://www.instagram.com/blissfulshopping/?hl=en"}>
+                <FaInstagram size={30} />
+              </NavLink>
             </p>
           </div>
         </div>
