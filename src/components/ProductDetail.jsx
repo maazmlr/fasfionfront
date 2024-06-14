@@ -62,14 +62,18 @@ const ProductDetail = () => {
                 <p className="text-lg mb-4 font-medium text-gray-900 dark:text-gray-300">
                   <span className="font-semibold">Stock:</span> {item?.stock}
                 </p>
-                <hr />
-                <p className="mt-2 sm:mt-0 sm:ml-4 text-lg font-medium text-gray-900 dark:text-gray-300">
+                <hr  className="mb-2"/>
+                <p className="mt- sm:mt-0  text-lg font-medium text-gray-900 dark:text-gray-300">
                   <span className="font-semibold">Price:</span> {item?.price}{" "}
                   Rs/
                 </p>
               </div>
-              <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
-                {item?.description}
+              <p className="mt-6 text-lg">
+                Description
+                <p className=" text-gray-600 dark:text-gray-400">
+                  {" "}
+                  {item?.description}
+                </p>
               </p>
               <div className="mt-8 sm:mt-10 flex justify-start">
                 <Button
