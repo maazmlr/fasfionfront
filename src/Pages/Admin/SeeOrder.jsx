@@ -6,6 +6,7 @@ const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  console.log(orders);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -65,6 +66,12 @@ const OrderList = () => {
                     </p>
                     <p>
                       <strong>Quantity:</strong> {product.quantity}
+                    </p>
+                    <p>
+                      <strong>Size:</strong> {product.size}
+                    </p>
+                    <p>
+                      <strong>Color:</strong> {product.color}
                     </p>
                     <p>
                       <strong>Total Price:</strong> $

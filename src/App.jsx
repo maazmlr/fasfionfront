@@ -26,6 +26,7 @@ import Cart from "./Pages/cart/Cart";
 import AddProducts from "./Pages/Admin/AddProducts";
 import Signup from "./Pages/Auth/Signup";
 import OrderList from "./Pages/Admin/SeeOrder";
+import ProductList from "./Pages/Admin/Listing";
 
 const Layout = () => {
   return (
@@ -40,31 +41,30 @@ const Layout = () => {
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      
       <Route>
-        <Route path="/admin" element={<AddProducts/>}>
-        </Route>
-        <Route path="/see" element={<OrderList/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/signin" element={<Signup signin={true}/>}/>
-        <Route/>
+        <Route path="/admin" element={<AddProducts />}></Route>
+        <Route path="/see" element={<OrderList />} />
+        <Route path="/see-all" element={<ProductList />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signup signin={true} />} />
+        <Route />
         <Route path="/" element={<Layout />}>
           <Route index={true} element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="women">
             <Route path="traditional">
-            <Route path="eastern" element={<Eastern />} />
-            <Route path="eastern/:id" element={<ProductDetail />} />
+              <Route path="eastern" element={<Eastern />} />
+              <Route path="eastern/:id" element={<ProductDetail />} />
 
-            <Route path="western" element={<Western />} />
-            <Route path="western/:id" element={<ProductDetail />} />
+              <Route path="western" element={<Western />} />
+              <Route path="western/:id" element={<ProductDetail />} />
             </Route>
             <Route path="turkish">
-            <Route path="eastern" element={<Eastern />} />
-            <Route path="eastern/:id" element={<ProductDetail />} />
+              <Route path="eastern" element={<Eastern />} />
+              <Route path="eastern/:id" element={<ProductDetail />} />
 
-            <Route path="western" element={<Western />} />
-            <Route path="western/:id" element={<ProductDetail />} />
+              <Route path="western" element={<Western />} />
+              <Route path="western/:id" element={<ProductDetail />} />
             </Route>
           </Route>
           <Route path="kids">

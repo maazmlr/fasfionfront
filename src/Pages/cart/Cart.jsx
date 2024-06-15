@@ -10,6 +10,8 @@ const Products = ({
   img,
   name,
   price,
+  size,
+  color,
   quantity = 1,
   onQuantityChange,
   onRemove,
@@ -29,6 +31,8 @@ const Products = ({
       <div>
         <h3 className="text-sm text-gray-900">{name}</h3>
         <p className="text-sm text-gray-900">Price: ${price}</p>
+        <p className="text-sm text-gray-900">size: {size}</p>
+        <p className="text-sm text-gray-900">color: {color}</p>
       </div>
 
       <div className="flex flex-1 items-center justify-end gap-2">
@@ -130,6 +134,8 @@ const Cart = () => {
         _id: item._id,
         name: item.name,
         total_price: item.price * item.quantity,
+        size: item.size,
+        color: item.color,
         quantity: item.quantity,
       })),
       ...formData,
@@ -181,6 +187,8 @@ const Cart = () => {
                       name={item.name}
                       price={item.price}
                       quantity={item.quantity}
+                      size={item.size}
+                      color={item.color}
                       onQuantityChange={updateQuantity}
                       onRemove={removeItem}
                     />

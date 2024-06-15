@@ -19,7 +19,14 @@ import { GrMenu } from "react-icons/gr";
 
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
-
+import turkish_east from "../../assets/t-east.jpg";
+import turkish_west from "../../assets/t-west.jpg";
+import tra_west from "../../assets/t-t-west.jpg";
+import tra_east from "../../assets/t-t-east.jpg";
+import tra_ring from "../../assets/ring.jpg";
+import tra_mala from "../../assets/mala.jpg";
+import tra_sets from "../../assets/sets.jpg";
+import tra_bracelet from "../../assets/bracelet.jpg";
 const navigation = {
   categories: [
     {
@@ -29,32 +36,29 @@ const navigation = {
         {
           name: "Turkish/eastern",
           href: "/women/turkish/eastern",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          imageSrc: turkish_east,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Turkish/western",
           href: "/women/turkish/western",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: turkish_west,
+
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Traditional/eastern",
           href: "/women/traditional/eastern",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          imageSrc: tra_east,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Traditional/western",
           href: "/women/traditional/western",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tra_west,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
@@ -129,32 +133,28 @@ const navigation = {
         {
           name: "Tradition/Rings",
           href: "/jewellery/traditional/rings",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tra_ring,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Tradition/Mala",
           href: "/jewellery/traditional/mala",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tra_mala,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Tradition/Sets",
           href: "/jewellery/traditional/sets",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tra_sets,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Tradition/Bracelet",
           href: "/jewellery/traditional/rings",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tra_bracelet,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
@@ -346,11 +346,11 @@ export default function Example() {
                                           key={item.name}
                                           className="group relative text-base sm:text-sm"
                                         >
-                                          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <div className="aspect-h-1 object-contain aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                             <img
                                               src={item.imageSrc}
                                               alt={item.imageAlt}
-                                              className="object-cover object-center"
+                                              className="object-cover h-48 object-center"
                                             />
                                           </div>
                                           <a

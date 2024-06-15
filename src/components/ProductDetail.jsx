@@ -9,7 +9,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const sizes = [
-  { name: "XXS", inStock: false },
+  { name: "XXS", inStock: true },
   { name: "XS", inStock: true },
   { name: "S", inStock: true },
   { name: "M", inStock: true },
@@ -24,9 +24,9 @@ const colors = [
   { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
 ];
 const ProductDetail = () => {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const [selectedSize, setSelectedSize] = useState(sizes[2]);
-
+  const [selectedColor, setSelectedColor] = useState();
+  const [selectedSize, setSelectedSize] = useState();
+  console.log(selectedSize);
   const [item, setItem] = useState();
   const { id } = useParams();
   console.log(item);
@@ -40,6 +40,7 @@ const ProductDetail = () => {
   }, [id]);
 
   function addToCart() {
+    console.log(selectedColor );
     if (!selectedSize) {
       alert("Please select a size before adding to cart.");
       return;
@@ -50,12 +51,20 @@ const ProductDetail = () => {
 
     // Check if the new item with the selected size is already in the array
     const itemExists = items.some(
-      (ite) => ite?._id === item?._id && ite?.size === selectedSize
+      (ite) =>
+        ite?._id === item?._id &&
+        ite?.size === selectedSize &&
+        ite?.color == selectedColor
     );
 
     // If the item doesn't exist, add it to the array
     if (!itemExists) {
-      items.push({ ...item, size: selectedSize, quantity: 1 });
+      items.push({
+        ...item,
+        size: selectedSize,
+        color: selectedColor,
+        quantity: 1,
+      });
       // Save the updated array back to localStorage
       localStorage.setItem("items", JSON.stringify(items));
       console.log("Item added successfully.");
@@ -96,24 +105,7 @@ const ProductDetail = () => {
                   Rs/
                 </p>
               </div>
-              <div className="mt-4">
-                <span className="font-semibold text-lg">Available Sizes:</span>
-                <div className="flex mt-2">
-                  {item?.size?.map((size) => (
-                    <button
-                      key={size}
-                      className={`mr-2 px-4 py-2 border rounded-lg ${
-                        selectedSize === size
-                          ? "bg-purple-900 text-white"
-                          : "bg-white text-gray-900"
-                      }`}
-                      onClick={() => setSelectedSize(size)}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
+
               <div>
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
@@ -123,14 +115,14 @@ const ProductDetail = () => {
                     onChange={setSelectedColor}
                     className="flex items-center space-x-3"
                   >
-                    {colors.map((color) => (
+                    {item?.color?.map((color) => (
                       <Radio
-                        key={color.name}
+                        key={color}
                         value={color}
-                        aria-label={color.name}
+                        aria-label={color}
                         className={({ focus, checked }) =>
                           classNames(
-                            color.selectedClass,
+                            color,
                             focus && checked ? "ring ring-offset-1" : "",
                             !focus && checked ? "ring-2" : "",
                             "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
@@ -138,10 +130,11 @@ const ProductDetail = () => {
                         }
                       >
                         <span
+                          style={{ background: color }}
                           aria-hidden="true"
                           className={classNames(
-                            color.class,
-                            "h-8 w-8 rounded-full border border-black border-opacity-10"
+                            // `bg-${color}-400`,
+                            `h-8 w-8  bg-${color}-600 rounded-full border border-black border-opacity-10`
                           )}
                         />
                       </Radio>
@@ -166,14 +159,14 @@ const ProductDetail = () => {
                     onChange={setSelectedSize}
                     className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                   >
-                    {sizes.map((size) => (
+                    {item?.size?.map((size) => (
                       <Radio
-                        key={size.name}
+                        key={size}
                         value={size}
-                        disabled={!size.inStock}
+                        // disabled={!size.inStock}
                         className={({ focus }) =>
                           classNames(
-                            size.inStock
+                            size
                               ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                               : "cursor-not-allowed bg-gray-50 text-gray-200",
                             focus ? "ring-2 ring-indigo-500" : "",
@@ -183,8 +176,8 @@ const ProductDetail = () => {
                       >
                         {({ checked, focus }) => (
                           <>
-                            <span>{size.name}</span>
-                            {size.inStock ? (
+                            <span>{size}</span>
+                            {true ? (
                               <span
                                 className={classNames(
                                   checked
