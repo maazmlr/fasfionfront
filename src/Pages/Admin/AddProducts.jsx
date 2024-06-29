@@ -99,7 +99,6 @@ const AddProducts = () => {
     });
   };
   const handleSubmit = async (values) => {
-    
     try {
       const formData = new FormData();
       formData.append("category", values.category);
@@ -435,6 +434,69 @@ const AddProducts = () => {
                       </SelectItem>
                       <SelectItem key="XL" value="XL">
                         XL
+                      </SelectItem>
+                      <SelectItem key="0-3" value="0-3">
+                        0-3
+                      </SelectItem>
+                      <SelectItem key="3-6" value="3-6">
+                        3-6
+                      </SelectItem>
+                      <SelectItem key="6-9" value="6-9">
+                        6-9
+                      </SelectItem>
+                      <SelectItem key="9-12" value="9-12">
+                        9-12
+                      </SelectItem>
+                      <SelectItem key="12-15" value="12-15">
+                        12-15
+                      </SelectItem>
+                      <SelectItem key="15-18" value="15-18">
+                        15-18
+                      </SelectItem>
+                      <SelectItem key="18-21" value="18-21">
+                        18-21
+                      </SelectItem>
+                      <SelectItem key="21-24" value="21-24">
+                        21-24
+                      </SelectItem>
+                      <SelectItem key="2-3" value="2-3">
+                        2-3
+                      </SelectItem>
+                      <SelectItem key="3-4" value="3-4">
+                        3-4
+                      </SelectItem>
+                      <SelectItem key="4-5" value="4-5">
+                        4-5
+                      </SelectItem>
+                      <SelectItem key="5-6" value="5-6">
+                        5-6
+                      </SelectItem>
+                      <SelectItem key="6-7" value="6-7">
+                        6-7
+                      </SelectItem>
+                      <SelectItem key="7-8" value="7-8">
+                        7-8
+                      </SelectItem>
+                      <SelectItem key="8-9" value="8-9">
+                        8-9
+                      </SelectItem>
+                      <SelectItem key="9-10" value="9-10">
+                        9-10
+                      </SelectItem>
+                      <SelectItem key="10-11" value="10-11">
+                        10-11
+                      </SelectItem>
+                      <SelectItem key="11-12" value="11-12">
+                        11-12
+                      </SelectItem>
+                      <SelectItem key="12-13" value="12-13">
+                        12-13
+                      </SelectItem>
+                      <SelectItem key="13-14" value="13-14">
+                        13-14
+                      </SelectItem>
+                      <SelectItem key="14-15" value="14-15">
+                        14-15
                       </SelectItem>
                     </Select>
                   )}
