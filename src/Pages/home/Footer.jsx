@@ -42,7 +42,7 @@ const Footer = () => {
 
             <li>
               <a
-                href="https://www.instagram.com/blissfulshopping/?hl=en"
+                href="https://www.instagram.com/blingandfairbysaman/?img_index=1"
                 rel="noreferrer"
                 target="_blank"
                 className="text-gray-700 transition hover:text-gray-700/75"

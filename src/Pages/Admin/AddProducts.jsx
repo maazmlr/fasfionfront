@@ -435,6 +435,9 @@ const AddProducts = () => {
                       <SelectItem key="XL" value="XL">
                         XL
                       </SelectItem>
+                      <SelectItem key="XXL" value="XXL">
+                        XXL
+                      </SelectItem>
                       <SelectItem key="0-3" value="0-3">
                         0-3
                       </SelectItem>

@@ -21,12 +21,15 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import turkish_east from "../../assets/t-east.jpg";
 import turkish_west from "../../assets/t-west.jpg";
-import tra_west from "../../assets/t-t-west.jpg";
-import tra_east from "../../assets/t-t-east.jpg";
+import tra_west from "../../assets/traditional-western.jpg";
+import tra_east from "../../assets/traditional-eastern.jpg";
 import tra_ring from "../../assets/ring.jpg";
 import tra_mala from "../../assets/mala.jpg";
 import tra_sets from "../../assets/sets.jpg";
 import tra_bracelet from "../../assets/bracelet.jpg";
+import boys from "../../assets/boys.jpg";
+import girls from "../../assets/girls.jpg";
+import infant from "../../assets/infant.jpg";
 const navigation = {
   categories: [
     {
@@ -71,24 +74,21 @@ const navigation = {
         {
           name: "Boys",
           href: "/kids/boys",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          imageSrc: boys,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Girls",
           href: "/kids/girls",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: girls,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Infant",
           href: "/kids/infant",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: infant,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
