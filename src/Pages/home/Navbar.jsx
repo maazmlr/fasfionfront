@@ -27,9 +27,13 @@ import tra_ring from "../../assets/ring.jpg";
 import tra_mala from "../../assets/mala.jpg";
 import tra_sets from "../../assets/sets.jpg";
 import tra_bracelet from "../../assets/bracelet.jpg";
+import tur_bracelet from "../../assets/turkish-bra.jpg";
+import tur_sets from "../../assets/turkish-sets.jpg";
+import tur_rings from "../../assets/turkish-rings.jpg";
 import boys from "../../assets/boys.jpg";
 import girls from "../../assets/girls.jpg";
 import infant from "../../assets/infant.jpg";
+import turkish_mala from "../../assets/turkish-mala.jpg";
 const navigation = {
   categories: [
     {
@@ -101,32 +105,28 @@ const navigation = {
         {
           name: "Turkish/Rings",
           href: "/jewellery/turkish/rings",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          imageSrc: tur_rings,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Turkish/Mala",
           href: "/jewellery/turkish/mala",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: turkish_mala,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Turkish/Sets",
           href: "/jewellery/turkish/sets",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tur_sets,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Turkish/Bracelet",
           href: "/jewellery/turkish/bracelet",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageSrc: tur_bracelet,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },

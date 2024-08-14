@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import boys from "../../assets/boys.jpg";
+import infant from "../../assets/infant.jpg";
+import tra_east from "../../assets/traditional-eastern.jpg";
 
 const NewColection = () => {
   return (
@@ -18,7 +21,7 @@ const NewColection = () => {
                 className="group relative block"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                  src={tra_east}
                   alt=""
                   className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
                 />
@@ -38,7 +41,7 @@ const NewColection = () => {
             <li>
               <NavLink to={"/kids/infant"} className="group relative block">
                 <img
-                  src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                  src={infant}
                   alt=""
                   className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
                 />
@@ -56,7 +59,7 @@ const NewColection = () => {
             <li className="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
               <NavLink to={"/kids/boys"} className="group relative block">
                 <img
-                  src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
+                  src={boys}
                   alt=""
                   className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
                 />

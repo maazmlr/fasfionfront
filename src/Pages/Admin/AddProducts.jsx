@@ -450,17 +450,17 @@ const AddProducts = () => {
                       <SelectItem key="9-12" value="9-12">
                         9-12
                       </SelectItem>
-                      <SelectItem key="12-15" value="12-15">
-                        12-15
+                      <SelectItem key="12-18" value="12-18">
+                        12-18
                       </SelectItem>
-                      <SelectItem key="15-18" value="15-18">
-                        15-18
+                      <SelectItem key="18-24" value="18-24">
+                        18-24
                       </SelectItem>
                       <SelectItem key="18-21" value="18-21">
                         18-21
                       </SelectItem>
-                      <SelectItem key="21-24" value="21-24">
-                        21-24
+                      <SelectItem key="1-2" value="1-2">
+                        1-2
                       </SelectItem>
                       <SelectItem key="2-3" value="2-3">
                         2-3
