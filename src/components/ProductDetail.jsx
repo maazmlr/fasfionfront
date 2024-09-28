@@ -45,6 +45,11 @@ const ProductDetail = () => {
       alert("Please select a size before adding to cart.");
       return;
     }
+    if (!selectedColor) {
+      alert("Please select a color before adding to cart.");
+      return;
+    }
+
 
     // Retrieve the existing items array from localStorage
     let items = JSON.parse(localStorage.getItem("items")) || [];

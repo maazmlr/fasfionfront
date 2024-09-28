@@ -16,6 +16,8 @@ const Products = ({
   onQuantityChange,
   onRemove,
 }) => {
+
+  
   const increaseQuantity = () => {
     onQuantityChange(_id, quantity + 1);
   };
@@ -30,7 +32,7 @@ const Products = ({
 
       <div>
         <h3 className="text-sm text-gray-900">{name}</h3>
-        <p className="text-sm text-gray-900">Price: ${price}</p>
+        <p className="text-sm text-gray-900">Price: {price} /RS</p>
         <p className="text-sm text-gray-900">size: {size}</p>
         <p className="text-sm text-gray-900">color: {color}</p>
       </div>
@@ -133,7 +135,7 @@ const Cart = () => {
       products: items.map((item) => ({
         _id: item._id,
         name: item.name,
-        total_price: item.price * item.quantity,
+        total_price: (item.price * item.quantity)+500,
         size: item.size,
         color: item.color,
         quantity: item.quantity,
@@ -145,12 +147,17 @@ const Cart = () => {
     if (Object.keys(formData).length !== 0) {
       axios
         .post(url + "/order/add-order", checkoutData)
-        .then((res) => console.log(res))
+        .then(() => {
+          openNotification("Checkout successful");
+          // Delay the navigation for 3 seconds (3000ms)
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
+        })
         .catch((res) => console.log(res));
       console.log(typeof Object.keys(formData));
       localStorage.removeItem("items");
-      navigate("/");
-      openNotification("check out successfull");
+
     } else {
       openNotification("Please fill delivery details before checkout");
     }
@@ -198,9 +205,13 @@ const Cart = () => {
                 <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
                   <div className="w-screen max-w-lg space-y-4">
                     <dl className="space-y-0.5 text-sm text-gray-700">
+                    <div className="flex justify-between !text-base font-medium">
+                        <dt>Delivery Charges</dt>
+                        <dd>500 /RS</dd>
+                      </div>
                       <div className="flex justify-between !text-base font-medium">
                         <dt>Total</dt>
-                        <dd>${total.toFixed(2)}</dd>
+                        <dd>{(total+500).toFixed(0)} /RS</dd>
                       </div>
                     </dl>
 
