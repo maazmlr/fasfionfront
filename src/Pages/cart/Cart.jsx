@@ -16,8 +16,6 @@ const Products = ({
   onQuantityChange,
   onRemove,
 }) => {
-
-  
   const increaseQuantity = () => {
     onQuantityChange(_id, quantity + 1);
   };
@@ -135,7 +133,7 @@ const Cart = () => {
       products: items.map((item) => ({
         _id: item._id,
         name: item.name,
-        total_price: (item.price * item.quantity)+500,
+        total_price: item.price * item.quantity + 300,
         size: item.size,
         color: item.color,
         quantity: item.quantity,
@@ -157,7 +155,6 @@ const Cart = () => {
         .catch((res) => console.log(res));
       console.log(typeof Object.keys(formData));
       localStorage.removeItem("items");
-
     } else {
       openNotification("Please fill delivery details before checkout");
     }
@@ -205,13 +202,13 @@ const Cart = () => {
                 <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
                   <div className="w-screen max-w-lg space-y-4">
                     <dl className="space-y-0.5 text-sm text-gray-700">
-                    <div className="flex justify-between !text-base font-medium">
+                      <div className="flex justify-between !text-base font-medium">
                         <dt>Delivery Charges</dt>
-                        <dd>500 /RS</dd>
+                        <dd>300 /RS</dd>
                       </div>
                       <div className="flex justify-between !text-base font-medium">
                         <dt>Total</dt>
-                        <dd>{(total+500).toFixed(0)} /RS</dd>
+                        <dd>{(total + 300).toFixed(0)} /RS</dd>
                       </div>
                     </dl>
 
