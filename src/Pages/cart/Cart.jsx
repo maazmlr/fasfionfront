@@ -146,7 +146,7 @@ const Cart = () => {
       axios
         .post(url + "/order/add-order", checkoutData)
         .then(() => {
-          openNotification("Checkout successful");
+          openNotification("order placed successfully");
           // Delay the navigation for 3 seconds (3000ms)
           setTimeout(() => {
             navigate("/");
