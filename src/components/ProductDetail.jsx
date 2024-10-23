@@ -5,6 +5,7 @@ import axios from "axios";
 import { url } from "../url";
 import { Button } from "@nextui-org/react";
 import { Radio, RadioGroup } from "@headlessui/react";
+import { notification } from "antd";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -29,6 +30,14 @@ const ProductDetail = () => {
   console.log(selectedSize);
   const [item, setItem] = useState();
   const { id } = useParams();
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (msg) => {
+    api.info({
+      message: `SUCCESS`,
+      description: msg,
+      placement: "top",
+    });
+  };
   console.log(item);
 
   useEffect(() => {
@@ -40,7 +49,7 @@ const ProductDetail = () => {
   }, [id]);
 
   function addToCart() {
-    console.log(selectedColor );
+    console.log(selectedColor);
     if (!selectedSize) {
       alert("Please select a size before adding to cart.");
       return;
@@ -49,7 +58,6 @@ const ProductDetail = () => {
       alert("Please select a color before adding to cart.");
       return;
     }
-
 
     // Retrieve the existing items array from localStorage
     let items = JSON.parse(localStorage.getItem("items")) || [];
@@ -71,15 +79,20 @@ const ProductDetail = () => {
         quantity: 1,
       });
       // Save the updated array back to localStorage
+      openNotification("product added in cart");
       localStorage.setItem("items", JSON.stringify(items));
       console.log("Item added successfully.");
+      
     } else {
       console.log("Item already exists in the array.");
+      openNotification("product already in cart");
     }
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-100 via-white to-gray-200 dark:from-gray-800 dark:via-gray-900 dark:to-black">
+      {contextHolder}
+
       <section className="py-12 md:py-20">
         <div className="max-w-screen-xl px-4 mx-auto lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-20">

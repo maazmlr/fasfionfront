@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { createContext, Fragment, useEffect, useState } from "react";
 import {
   Dialog,
   DialogPanel,
@@ -168,6 +168,32 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const [cartItems, setCartItems] = useState(0);
+
+  useEffect(() => {
+    // Function to update cart items from localStorage
+    const updateCartItems = () => {
+      let items = JSON.parse(localStorage.getItem("items")) || [];
+      setCartItems(items.length);
+    };
+
+    // Call updateCartItems initially
+    updateCartItems();
+
+    // Poll for localStorage changes (for same-tab changes)
+    const intervalId = setInterval(() => {
+      updateCartItems();
+    }, 1000); // Poll every second (can adjust the interval)
+
+    // Listen for localStorage changes across different tabs/windows
+    window.addEventListener("storage", updateCartItems);
+
+    // Clean up event listener and interval when the component unmounts
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener("storage", updateCartItems);
+    };
+  }, []);
   const [open, setOpen] = useState(false);
 
   const closeMenu = () => setOpen(false);
@@ -388,14 +414,18 @@ export default function Example() {
                 {/* Search */}
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                <div className="ml-4 flow-root lg:ml-6 relative">
                   <NavLink
                     to={"/cart"}
                     className="group -m-2 flex items-center p-2"
                   >
-                    <FaCartShopping />
-
+                    <FaCartShopping className="relative" />
                     <span className="sr-only">items in cart, view bag</span>
+
+                    {/* Product Count Badge */}
+                    <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                      {cartItems}
+                    </span>
                   </NavLink>
                 </div>
               </div>

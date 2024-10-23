@@ -45,7 +45,7 @@ function App() {
         <Route path="/admin" element={<AddProducts />}></Route>
         <Route path="/see" element={<OrderList />} />
         <Route path="/see-all" element={<ProductList />} />
-      
+
         <Route />
         <Route path="/" element={<Layout />}>
           <Route index={true} element={<Home />} />
@@ -118,8 +118,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      {/* <ProductCard /> */}
-      {/* <Cart/>  */}
     </>
   );
 }

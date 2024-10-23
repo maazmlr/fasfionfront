@@ -226,8 +226,8 @@ const Cart = () => {
             </div>
           </div>
         )}
+        <SignupForm onSubmit={handleFormSubmit} />
       </section>
-      <SignupForm onSubmit={handleFormSubmit} />
     </div>
   );
 };
