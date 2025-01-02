@@ -1,9 +1,28 @@
 import { notification } from "antd";
+import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { url } from "../../url";
 
-const SignupForm = ({ onSubmit }) => {
+const SignupForm = () => {
+  const navigate = useNavigate();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
+    setItems(storedItems);
+  }, []);
+
+  const [formData, setFormData] = useState({}); // State to hold form data
+
   const [api, contextHolder] = notification.useNotification();
+  const [orderNo, setOrderNo] = useState();
+
+  const handleFormSubmit = (values) => {
+    setFormData(values); // Store form data when submitted
+  };
 
   const openNotification = (msg) => {
     api.info({
@@ -12,6 +31,47 @@ const SignupForm = ({ onSubmit }) => {
       placement: "top",
     });
   };
+
+  const handleCheckout = () => {
+    // Construct the object with product details and form data
+
+    const checkoutData = {
+      products: items?.map((item) => ({
+        _id: item._id,
+        name: item.name,
+        total_price: item.price * item.quantity + 300,
+        size: item.size,
+        color: item.color,
+        quantity: item.quantity,
+      })),
+      ...formData,
+    };
+
+    console.log(checkoutData);
+    if (Object.keys(formData).length !== 0) {
+      axios
+        .post(url + "/order/add-order", checkoutData)
+        .then((res) => {
+          console.log(res.data.data.savedOrder, "abc");
+
+          openNotification("Order placed successfully");
+          localStorage.removeItem("items");
+
+          // Delay the navigation for 3 seconds (3000ms)
+          setTimeout(() => {
+            navigate(`/confirm-page/${res?.data?.data?.savedOrder?.orderNo}`); // Navigate back to the home page
+          }, 3000);
+        })
+        .catch((res) => {
+          console.log("error is ", res);
+
+          openNotification("some thing went wrong kindly try again later");
+        });
+    } else {
+      // openNotification("Please fill in delivery details before checkout");
+    }
+  };
+
   return (
     <Formik
       initialValues={{
@@ -31,16 +91,18 @@ const SignupForm = ({ onSubmit }) => {
         whatsappNumber: Yup.string().required("Required"),
       })}
       onSubmit={(values, { reset }) => {
-        console.log(values);
-        onSubmit(values);
-        openNotification("detail added succesfully");
-        reset();
+        handleFormSubmit(values);
+
+        // Now invoke handleCheckout with the form data
+        handleCheckout(values);
+
+        reset(); // Optionally reset form fields after submission
       }}
     >
       {({ errors, touched }) => (
         <Form className="max-w-md mx-auto p-4 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
           {contextHolder}
-          <h2 className="text-2xl font-bold mb-4">Delivery Details </h2>
+          <h2 className="text-2xl font-bold mb-4">Delivery Details</h2>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label

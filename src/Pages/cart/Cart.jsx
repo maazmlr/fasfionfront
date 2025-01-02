@@ -3,7 +3,7 @@ import SignupForm from "./CartForm";
 import { Button, notification } from "antd";
 import axios from "axios";
 import { url } from "../../url";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Products = ({
   _id,
@@ -127,7 +127,7 @@ const Cart = () => {
     console.log(itemsSummary);
   }, [items]);
 
-  const handleCheckout = () => {
+  const handleCheckout = (formData) => {
     // Construct the object with product details and form data
     const checkoutData = {
       products: items.map((item) => ({
@@ -158,10 +158,6 @@ const Cart = () => {
     } else {
       openNotification("Please fill delivery details before checkout");
     }
-  };
-
-  const handleFormSubmit = (values) => {
-    setFormData(values); // Store form data when submitted
   };
 
   return (
@@ -213,12 +209,13 @@ const Cart = () => {
                     </dl>
 
                     <div className="flex justify-end">
-                      <Button
-                        className="block rounded bg-white  px-6  border-1 border-purple-900 text-sm text-gray-100 transition hover:bg-gray-600"
-                        onClick={handleCheckout}
+                      <NavLink
+                        to={"/confirm"}
+                        state={{ items: items }}
+                        className="block rounded bg-white  py-3 px-6   border-1 border-purple-900 text-sm  transition hover:bg-gray-600"
                       >
                         Checkout
-                      </Button>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -226,7 +223,7 @@ const Cart = () => {
             </div>
           </div>
         )}
-        <SignupForm onSubmit={handleFormSubmit} />
+        {/* <SignupForm onSubmit={handleFormSubmit} /> */}
       </section>
     </div>
   );

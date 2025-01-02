@@ -39,6 +39,9 @@ const OrderList = () => {
               <div className="text-blue-600 text-lg font-semibold">
                 Order ID: {order._id}
               </div>
+              <p>
+                <strong>Order No</strong> {order.orderNo}
+              </p>
               <p className="mt-2">
                 <strong>Full Name:</strong> {order.fullName}
               </p>

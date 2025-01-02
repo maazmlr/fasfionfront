@@ -27,6 +27,8 @@ import AddProducts from "./Pages/Admin/AddProducts";
 import Signup from "./Pages/Auth/Signup";
 import OrderList from "./Pages/Admin/SeeOrder";
 import ProductList from "./Pages/Admin/Listing";
+import SignupForm from "./Pages/cart/CartForm";
+import ConfirmPage from "./Pages/cart/ConfirmPage";
 
 const Layout = () => {
   return (
@@ -50,6 +52,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index={true} element={<Home />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="confirm" element={<SignupForm />} />
+          <Route path="confirm-page/:id" element={<ConfirmPage />} />
           <Route path="women">
             <Route path="traditional">
               <Route path="eastern" element={<Eastern />} />
