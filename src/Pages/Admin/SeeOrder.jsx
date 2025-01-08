@@ -77,8 +77,8 @@ const OrderList = () => {
                       <strong>Color:</strong> {product.color}
                     </p>
                     <p>
-                      <strong>Total Price:</strong> $
-                      {product.total_price.toFixed(2)}
+                      <strong>Total Price:</strong>
+                      {product.total_price.toFixed(2)} /RS
                     </p>
                   </li>
                 ))}
